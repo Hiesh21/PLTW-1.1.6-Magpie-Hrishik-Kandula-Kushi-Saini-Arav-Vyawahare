@@ -36,21 +36,43 @@ public class Magpie3
     public String getResponse(String statement)
     {
         String response = "";
-        if (statement.length() == 0)
-        {
-            response = "Say something, please.";
-        }
-        else if (findKeyword(statement, "no") >= 0)
+        if (statement.indexOf("no") >= 0)
         {
             response = "Why so negative?";
         }
-        else if (findKeyword(statement, "mother") >= 0
-        || findKeyword(statement, "father") >= 0
-        || findKeyword(statement, "sister") >= 0
-        || findKeyword(statement, "brother") >= 0)
+        else if (statement.indexOf("mother") >= 0
+                || statement.indexOf("father") >= 0
+                || statement.indexOf("sister") >= 0
+                || statement.indexOf("brother") >= 0)
         {
             response = "Tell me more about your family.";
         }
+        
+        else if (statement.indexOf("cat") >= 0
+                || statement.indexOf("dog") >= 0
+                || statement.indexOf("bunny") >= 0
+                || statement.indexOf("fish") >= 0)
+        {
+            response = "Tell me more about your pets.";
+        }
+        
+        else if (statement.indexOf("kaehms") >= 0)
+        {
+            response = "Sounds like a swell teacher.";
+        }
+        else if (statement.trim().length() == 0)
+            response = "Say something.";
+            
+        else if (statement.indexOf("joe") >= 0)
+        {
+            response = "Who's Joe?";
+        }
+        
+        else if (statement.indexOf("joemama") >= 0)
+        {
+            response = "Wow.";
+        }
+      
         else
         {
             response = getRandomResponse();
